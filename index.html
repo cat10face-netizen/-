@@ -10,10 +10,11 @@
             box-sizing: border-box;
         }
 
-        body {
-            width: 1920px;
-            height: 1080px;
-            background: radial-gradient(circle at center, #0a192f 0%, #020c1b 100%);
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #020c1b; 
+            background-image: radial-gradient(circle at center, #0a192f 0%, #020c1b 100%);
             overflow: hidden;
             font-family: 'Arial', sans-serif;
             display: flex;
@@ -27,18 +28,18 @@
             width: 100%;
             height: 100%;
             background-image: 
-                radial-gradient(#64ffda 1px, transparent 1px),
-                radial-gradient(#4facfe 1.5px, transparent 1.5px);
-            background-size: 100px 100px, 150px 150px;
-            background-position: 0 0, 40px 60px;
-            animation: moveParticles 20s linear infinite;
-            opacity: 0.3;
+                radial-gradient(#64ffda 2px, transparent 2px),
+                radial-gradient(#4facfe 2px, transparent 2px);
+            background-size: 120px 120px, 180px 180px;
+            background-position: 0 0, 50px 50px;
+            animation: moveParticles 15s linear infinite;
+            opacity: 0.4;
             z-index: 1;
         }
 
         @keyframes moveParticles {
-            0% { background-position: 0 0, 40px 60px; }
-            100% { background-position: 100px 100px, 140px 160px; }
+            0% { background-position: 0 0, 50px 50px; }
+            100% { background-position: 120px 120px, 170px 170px; }
         }
 
         /* Контейнер для баннера */
@@ -48,12 +49,13 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            width: 1600px;
-            padding: 40px 80px;
-            background: rgba(2, 12, 27, 0.6);
-            border: 2px solid rgba(100, 255, 218, 0.2);
+            width: 1500px;
+            max-width: 95%;
+            padding: 50px 80px;
+            background: rgba(10, 25, 47, 0.8);
+            border: 2px solid rgba(100, 255, 218, 0.3);
             border-radius: 30px;
-            box-shadow: 0 0 50px rgba(100, 255, 218, 0.1);
+            box-shadow: 0 0 60px rgba(100, 255, 218, 0.15);
             backdrop-filter: blur(10px);
         }
 
@@ -68,7 +70,7 @@
             font-size: 80px;
             font-weight: 900;
             color: #ffffff;
-            text-shadow: 0 0 20px #4facfe, 0 0 40px #4facfe;
+            text-shadow: 0 0 15px #4facfe, 0 0 30px #4facfe;
             opacity: 0;
             animation: slideUp 1s ease-out forwards;
         }
@@ -91,7 +93,7 @@
         .cta-text {
             font-size: 36px;
             color: #8892b0;
-            margin-top: 40px;
+            margin-top: 30px;
             letter-spacing: 2px;
             opacity: 0;
             animation: fadeIn 1s ease-out 1s forwards;
@@ -107,36 +109,31 @@
         }
 
         .qr-container {
-            width: 400px;
-            height: 400px;
-            background: #000;
+            /* Размер контейнера увеличен, чтобы твой ник @SKIPYYYVPN внизу поместился целиком */
+            width: 420px;
+            height: 420px;
+            background: transparent;
             border-radius: 20px;
-            padding: 15px;
-            box-shadow: 0 0 40px rgba(79, 172, 254, 0.4);
             animation: pulse 2s infinite ease-in-out;
             position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .qr-container img {
             width: 100%;
             height: 100%;
+            /* object-fit: contain не даст картинке обрезаться */
             object-fit: contain;
-            border-radius: 10px;
-        }
-
-        .scan-text {
-            font-size: 24px;
-            color: #64ffda;
-            margin-top: 20px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: bold;
-            animation: pulseText 2s infinite ease-in-out;
+            display: block;
+            /* Добавляем твоему QR-коду неоновое свечение */
+            filter: drop-shadow(0 0 20px rgba(79, 172, 254, 0.6));
         }
 
         /* Анимации */
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(50px); }
+            from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -151,15 +148,9 @@
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 40px rgba(79, 172, 254, 0.4); }
-            50% { transform: scale(1.03); box-shadow: 0 0 60px rgba(79, 172, 254, 0.8); }
-            100% { transform: scale(1); box-shadow: 0 0 40px rgba(79, 172, 254, 0.4); }
-        }
-
-        @keyframes pulseText {
-            0% { opacity: 0.7; }
-            50% { opacity: 1; }
-            100% { opacity: 0.7; }
+            0% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(79, 172, 254, 0.4)); }
+            50% { transform: scale(1.03); filter: drop-shadow(0 0 35px rgba(100, 255, 218, 0.8)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(79, 172, 254, 0.4)); }
         }
     </style>
 </head>
@@ -176,10 +167,9 @@
 
         <div class="qr-section">
             <div class="qr-container">
-                <!-- Здесь подключается твоя картинка с QR-кодом -->
+                <!-- Твоя картинка с ником @SKIPYYYVPN внизу -->
                 <img src="qr.png" alt="QR Code">
             </div>
-            <div class="scan-text">Наведи камеру телефона</div>
         </div>
     </div>
 
